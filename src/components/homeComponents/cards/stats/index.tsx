@@ -8,8 +8,6 @@ export function CardStart({iconName, iconColor, cardText, cardNumber}:{
   cardText: string;
   cardNumber: number;
 }) {
-
-
   return (
   <View style={styles.mainContent}>
     <View style={styles.shadow}>
@@ -18,7 +16,7 @@ export function CardStart({iconName, iconColor, cardText, cardNumber}:{
         <Text style={styles.cardTextNumber}>{cardNumber}</Text>
         <Text style={styles.cardText}>{cardText}</Text>
       </View>
-    </View>
+    </View> 
   </View> 
   )
 }

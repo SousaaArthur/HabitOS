@@ -4,8 +4,8 @@ import { Ionicons } from '@expo/vector-icons';
 import { styles } from './styles';
 
 export function CardHabits({habit, typeHabit}: {
-  habit: string;
-  typeHabit: string;
+  habit?: string;
+  typeHabit?: string;
 }) {
   return (
     <View style={styles.mainContent}>

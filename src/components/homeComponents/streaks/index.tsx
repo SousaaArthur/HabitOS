@@ -1,7 +1,7 @@
 import { View} from 'react-native';
 import { styles } from './styles';
 
-import { CardStart } from '../cardStat';
+import { CardStart } from '../cards/stats';
 
 
 export function CardStreaks() {

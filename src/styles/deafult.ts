@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
   main: {
     flex: 1,
-    backgroundColor: "#fafafa", // Cor de fundo clara
+    backgroundColor: "#fff"
   }, 
   header: {
     margin: 12,
@@ -11,12 +11,4 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
   },
-  contentLevel: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 5,
-    backgroundColor: "#8A2BE250", 
-    borderRadius: 20,
-    padding: 5,
-  }
-});
+})

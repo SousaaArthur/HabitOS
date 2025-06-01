@@ -1,11 +1,12 @@
 import { View, Text } from "react-native";
-import { styles } from "./styles";
+import { styles } from "../../styles/home";
 import { Ionicons, FontAwesome } from "@expo/vector-icons";
 
 // Components
-import { ProgressCard } from "../../components/progressCard";
-import { CardStreaks } from "../../components/cardStreaks";
-import { ListOfHabits } from "../../components/listOfHabits";
+import { ProgressCard } from "../../components/homeComponents/progressCard";
+import { CardStreaks } from "../../components/homeComponents/cards/streaks";
+import { ListOfHabits } from "../../components/homeComponents/listOfHabits";
+
 
 export default function Index(){
   return(
