@@ -3,7 +3,7 @@ import { styles } from "../../styles/home";
 import { Ionicons, FontAwesome } from "@expo/vector-icons";
 
 // Components
-import { ProgressCard } from "../../components/homeComponents/progressCard";
+import { ProgressCard } from "../../components/homeComponents/cards/progress";
 import { CardStreaks } from "../../components/homeComponents/cards/streaks";
 import { ListOfHabits } from "../../components/homeComponents/listOfHabits";
 

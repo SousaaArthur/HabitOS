@@ -1,10 +1,15 @@
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
-  mainContent: {
+  main: {
+    flex: 1,
+    backgroundColor: "#fff"
+  }, 
+  header: {
     margin: 12,
+    padding: 10,
+    gap: 20,
     flexDirection: "row",
-    gap: 10,
-    justifyContent: "space-around",
+    alignItems: 'center'
   },
 })

@@ -1,7 +1,7 @@
 import { View} from 'react-native';
-import { styles } from './styles';
+import { StyleSheet } from 'react-native';
 
-import { CardStart } from '../cards/stats';
+import { CardStart } from './stats';
 
 
 export function CardStreaks() {
@@ -13,3 +13,12 @@ export function CardStreaks() {
     </View>
   )
 }
+
+const styles = StyleSheet.create({
+  mainContent: {
+    margin: 12,
+    flexDirection: "row",
+    gap: 10,
+    justifyContent: "space-around",
+  },
+})

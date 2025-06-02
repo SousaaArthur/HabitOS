@@ -1,6 +1,6 @@
 import { View, Text } from 'react-native';
-import { styles } from './styles';
-import { Button } from '../../common/button';
+import { StyleSheet } from 'react-native';
+import { Button } from '../common/button';
 
 export function NoneHabits() {
   return (
@@ -13,3 +13,14 @@ export function NoneHabits() {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  main: {
+    flex: 1,
+    padding: 12,
+    marginTop: 10,
+    justifyContent: "center",
+    alignItems: "center",
+    gap: 10,
+  }
+})
