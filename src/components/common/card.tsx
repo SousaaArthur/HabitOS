@@ -3,19 +3,21 @@ import { Ionicons } from '@expo/vector-icons';
 import { ReactNode, ComponentProps } from "react";
 
 
-export default function CardCreate({ title, subtitle, icon, children, gap } : {
+export default function CardCreate({ title, subtitle, icon, children, gap, titleColor, padding} : {
   title?: string;
   subtitle?: string;
   icon?: ComponentProps<typeof Ionicons>['name'];
   children?: ReactNode;
   gap?: number;
+  titleColor?: string;
+  padding?: number;
 }) {
   return (
-    <View style={[styles.container, { gap: gap || 0 }]}>
+    <View style={[styles.container, { gap: gap || 0, padding: padding || 12 }]}>
       <View style={{ marginLeft: 8}}>
-        <View style={{  gap: 8, justifyContent: 'flex-start' }}>
-          <Ionicons name={icon} size={24} color="#000" style={{ display: icon ? 'flex' : 'none' }}/>
-          <Text style={[styles.title, { marginBottom: 10 }]}>{title}</Text>
+        <View style={{  gap: 8, justifyContent: 'flex-start', flexDirection: 'row', alignItems: 'center' }}>
+          <Ionicons name={icon} size={24} color={titleColor || '#000'} style={{ display: icon ? 'flex' : 'none' }}/>
+          <Text style={[styles.title, { marginBottom: 10, color: titleColor || '#000' }]}>{title}</Text>
         </View>
         <Text style={[styles.subtitle, { display: subtitle ? "flex" : "none" }]}>{subtitle}</Text>
       </View>

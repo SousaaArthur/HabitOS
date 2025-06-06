@@ -12,4 +12,9 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: 'center'
   },
+  textColor: {
+    textAlign: "center",
+    color: "#696969",
+    margin: 2
+  }
 })
