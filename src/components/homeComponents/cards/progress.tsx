@@ -5,7 +5,7 @@ import { StyleSheet } from 'react-native';
 
 export function ProgressCard() {
   return (
-    <LinearGradient colors={['#7C3AED', '#A855F7']} end={{ x: 1, y: 1 }} style={styles.cardProgress}>
+    <LinearGradient colors={['#27ae60', '#58d68d']} end={{ x: 1, y: 1 }} style={styles.cardProgress}>
     <View>
       <View style={styles.progressContainerText}>
       <Text style={styles.mainText}>Progresso de Hoje</Text>
@@ -17,7 +17,7 @@ export function ProgressCard() {
     </View>
     </View>
     <View style={styles.progressBar}>
-      <View style={{ width: '0%', height: '100%', backgroundColor: '#4F46E5' }} />
+      <View style={{ width: '0%', height: '100%', backgroundColor: '#27ae60' }} />
     </View>
     </LinearGradient>
   )

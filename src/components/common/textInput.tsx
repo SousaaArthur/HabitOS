@@ -1,14 +1,16 @@
-import { View, TextInput, StyleSheet } from "react-native";
+import { View, TextInput, StyleSheet, Text } from "react-native";
 import { useState } from "react";
 
-export default function CustomTextInput({ placeholder } : {
+export default function CustomTextInput({ placeholder, label } : {
   placeholder?: string;
+  label?: string;
 }) {
 
   const [ isFocused, setIsFocused ] = useState(false);
 
   return (
     <View style={styles.container}>
+      <Text style={{ fontSize: 16, marginBottom: 5, display: label ? "flex" : "none" }}>{label}</Text>
       <TextInput
         style={[styles.input, isFocused && styles.inputFocused, {}]}
         placeholder={placeholder}
@@ -22,7 +24,7 @@ export default function CustomTextInput({ placeholder } : {
 
 const styles = StyleSheet.create({
   container: {
-    margin: 16,
+    margin: 5,
   },
   input: {
     height: 50,
@@ -40,7 +42,7 @@ const styles = StyleSheet.create({
     elevation: 2,
   },
   inputFocused: {
-    borderColor: '#6200ee',
+    borderColor: '#27ae60',
     borderWidth: 2,
   },
 });

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, FlatList } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, FlatList, Alert } from 'react-native';
+import { Button } from './button';
 
 const daysOfWeek = [
   { key: '0', label: 'Dom' },
@@ -22,8 +23,26 @@ export default function WeekSelector() {
 
   const isSelected = (key: string) => selectedDays.includes(key);
 
+  function selectAllDays() {
+    if (selectedDays.length === daysOfWeek.length) {
+      setSelectedDays([]);
+    }
+    else {
+      setSelectedDays(daysOfWeek.map(day => day.key)); // Select all days
+    }
+  }
+
+  
   return (
     <View style={styles.container}>
+
+      <Button 
+        label='Selecionar Todos' 
+        bgColor={selectedDays.length === daysOfWeek.length ? '#27ae60' : '#fff'}
+        borderWidth={2}
+        borderColor={selectedDays.length === daysOfWeek.length ? '#229954' : '#ccc'}
+        textColor={selectedDays.length === daysOfWeek.length ? '#fafafa' : '#000'}
+        onPress={selectAllDays}/>
 
       <FlatList
         data={daysOfWeek}
@@ -38,6 +57,7 @@ export default function WeekSelector() {
               isSelected(item.key) && styles.dayButtonSelected,
             ]}
             onPress={() => toggleDay(item.key)}
+            activeOpacity={0.7}
           >
             <Text
               style={[
@@ -50,21 +70,24 @@ export default function WeekSelector() {
           </TouchableOpacity>
         )}
       />
+
+      <Text style={{textAlign: 'center'}}>Nem um dia selecionado</Text>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 32,
-    paddingHorizontal: 16,
+    marginTop: 5,
+    paddingHorizontal: 5,
+    gap: 15,
   },
   dayList: {
     gap: 5,
   },
   dayButton: {
-    width: 50,
-    height: 50, // Adicionado
+    width: 45,
+    height: 45,
     alignItems: 'center',
     justifyContent: 'center',
     textAlign: 'center',
@@ -72,11 +95,11 @@ const styles = StyleSheet.create({
     borderRadius: 100,
     borderWidth: 2,
     borderColor: '#ccc',
-    backgroundColor: '#f0f0f0',
+    backgroundColor: '#fff',
   },
   dayButtonSelected: {
-    backgroundColor: '#7C3AED',
-    borderColor: '#7C3AED',
+    backgroundColor: '#27ae60',
+    borderColor: '#229954',
     borderWidth: 2,
   },
   dayLabel: {

@@ -1,6 +1,7 @@
 import { useState, ReactNode } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
+import { Ionicons } from '@expo/vector-icons';
 
 interface SelectInputProps {
   children: ReactNode;
@@ -25,7 +26,7 @@ export default function SelectInput({ children }: SelectInputProps) {
 
 const styles = StyleSheet.create({
   container: {
-    margin: 16,
+    margin: 5,
     borderWidth: 1,
     borderColor: '#ccc',
     borderRadius: 12,
@@ -43,7 +44,7 @@ const styles = StyleSheet.create({
     color: '#333',
   },
   focused: {
-    borderColor: '#6200ee',
+    borderColor: '#27ae60',
   },
   unfocused: {
     borderColor: '#ccc',

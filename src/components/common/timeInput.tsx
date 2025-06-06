@@ -19,7 +19,7 @@ export default function TimeInput() {
   return (
     <View style={styles.container}>
       <TouchableOpacity style={styles.timeButton} onPress={() => setShowPicker(true)}>
-        <Text style={styles.timeText}> <Text style={{ fontWeight: '400', color: '#b0b0b0' }}>Hora: </Text> {formattedTime}</Text>
+        <Text style={styles.timeText}> <Text style={{ fontWeight: '400', color: '#999' }}>Hora: </Text> {formattedTime}</Text>
       </TouchableOpacity>
 
       {showPicker && (
@@ -37,7 +37,7 @@ export default function TimeInput() {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 20,
+    padding: 5,
   },
   timeButton: {
     height: 50,

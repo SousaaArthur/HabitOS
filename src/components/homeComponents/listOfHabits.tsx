@@ -4,6 +4,7 @@ import { StyleSheet } from 'react-native';
 
 import { CardHabits } from './cards/habits';
 import { NoneHabits } from './noneHabits';
+import { Button } from '../common/button';
 
 export function ListOfHabits() {
   type Habit = {
@@ -20,7 +21,12 @@ export function ListOfHabits() {
     <View style={styles.mainContent}>
       <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "space-between" }}>
         <Text style={styles.mainText}>Hábitos de Hoje</Text>
-        <Ionicons name="add-circle-outline" size={24} />
+        <Button
+          route='/create'
+          icon='add-circle-outline'
+          bgColor='transparent'
+          textColor='#000'
+        ></Button>
       </View>
 
       <ScrollView style={{ marginTop: 16 }} contentContainerStyle={{ paddingBottom: 24 }}>

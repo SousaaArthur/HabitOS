@@ -6,7 +6,7 @@ import { StyleSheet } from 'react-native';
 
 
 type Props = TouchableOpacityProps & {
-  label: string;
+  label?: string;
   width?: number;
   height?: number;
   route?: string;
@@ -14,19 +14,34 @@ type Props = TouchableOpacityProps & {
   textColor?: string;
   fontSize?: number;
   gap?: number;
+  borderColor?: string;
+  borderWidth?: number;
+  margin?: number;
+  replaceRoute?: boolean;
   icon?: ComponentProps<typeof Ionicons>['name'];
 }
 
-export function Button({ label, width, height, route, icon, bgColor, textColor, fontSize, gap, ...rest }: Props) {
+export function Button({ label, width, height, route, icon, bgColor, textColor, fontSize, gap, borderColor, borderWidth, margin, replaceRoute, ...rest }: Props) {
   const router = useRouter();
   function handlePress() {
-    if (route) router.push(route);
+    if (route) replaceRoute ? router.replace(route) : router.push(route);
   }
 
   return (
-    <TouchableOpacity style={[styles.main, { width: width, height: height, backgroundColor: bgColor || '#4F46E5', gap: gap || 10 }]} activeOpacity={0.8} onPress={handlePress} {...rest}>
-      <Ionicons name={icon || 'add'} size={24} color={textColor || "#fafafa"}/>
-      <Text style={{color: textColor || "#fafafa", fontSize: fontSize || 16, fontWeight: "bold"}}>{label}</Text>
+    <TouchableOpacity 
+    style={[
+      styles.main, { 
+        width: width, 
+        height: height, 
+        backgroundColor: bgColor || '#27ae60', 
+        gap: gap || 10, 
+        borderColor: borderColor || 'transparent', 
+        borderWidth: borderWidth || 0, 
+        margin: margin || 0 
+      }
+    ]} activeOpacity={0.8} onPress={handlePress} {...rest}>
+      <Ionicons name={icon || 'add'} size={24} color={textColor || "#fafafa"} style={{ display: icon ? 'flex' : 'none' }}/>
+      <Text style={{color: textColor || "#fafafa", fontSize: fontSize || 16, fontWeight: "bold", display: label ? 'flex' : 'none'}}>{label}</Text>
     </TouchableOpacity>
   );
 }
@@ -38,5 +53,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 10,
+    borderWidth: 1,
   },
 });

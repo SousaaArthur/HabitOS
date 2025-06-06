@@ -23,6 +23,7 @@ export default function TabLayout() {
         if (route.name === 'index') iconName = focused ? 'home' : 'home-outline';
         else if (route.name === 'config/index') iconName = focused ? 'settings' : 'settings-outline';
         else if (route.name === 'stats/index') iconName = focused ? 'stats-chart' : 'stats-chart-outline';
+        else if (route.name === 'organize/index') iconName = focused ? 'list' : 'list-outline';
         
           return <Ionicons name={iconName} size={24} color={focused ? '#000' : '#000'} />;
         },
@@ -34,6 +35,13 @@ export default function TabLayout() {
       name="index"
       options={{
         title: 'Início',
+      }}
+    />
+
+    <Tabs.Screen
+      name="organize/index"
+      options={{
+        title: 'Organizar',
       }}
     />
 

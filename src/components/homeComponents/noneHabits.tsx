@@ -9,6 +9,7 @@ export function NoneHabits() {
       <Button
         label='Criar novo hábito'
         route='/create'
+        icon='add'
       />
     </View>
   );
