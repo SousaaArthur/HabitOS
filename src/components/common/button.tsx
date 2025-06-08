@@ -19,9 +19,10 @@ type Props = TouchableOpacityProps & {
   margin?: number;
   replaceRoute?: boolean;
   icon?: ComponentProps<typeof Ionicons>['name'];
+  opacity?: number;
 }
 
-export function Button({ label, width, height, route, icon, bgColor, textColor, fontSize, gap, borderColor, borderWidth, margin, replaceRoute, ...rest }: Props) {
+export function Button({ label, width, height, route, icon, bgColor, textColor, fontSize, gap, borderColor, borderWidth, margin, replaceRoute, opacity, ...rest }: Props) {
   const router = useRouter();
   function handlePress() {
     if (route) replaceRoute ? router.replace(route) : router.push(route);
@@ -39,7 +40,7 @@ export function Button({ label, width, height, route, icon, bgColor, textColor, 
         borderWidth: borderWidth || 0, 
         margin: margin || 0 
       }
-    ]} activeOpacity={0.8} onPress={handlePress} {...rest}>
+    ]} activeOpacity={opacity || 0.8} onPress={handlePress} {...rest}>
       <Ionicons name={icon || 'add'} size={24} color={textColor || "#fafafa"} style={{ display: icon ? 'flex' : 'none' }}/>
       <Text style={{color: textColor || "#fafafa", fontSize: fontSize || 16, fontWeight: "bold", display: label ? 'flex' : 'none'}}>{label}</Text>
     </TouchableOpacity>

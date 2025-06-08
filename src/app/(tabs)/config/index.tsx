@@ -29,8 +29,8 @@ function Config() {
           </SelectInput>
         </CardCreate>
         <CardCreate icon='cloud-upload' title='Backup e Restauração' subtitle='Faça backup dos seus dados ou restaure de um backup existente' gap={6}>
-          <Button icon='save-outline' label='Fazer Backup' bgColor='transparent' textColor='#000' borderWidth={2} borderColor='#000'/>
-          <Button icon='download-outline' label='Restaurar Backup' bgColor='transparent' textColor='#000' borderWidth={2} borderColor='#000'/>
+          <Button icon='save-outline' label='Fazer Backup' bgColor='transparent' textColor='#000' borderWidth={2} borderColor='#000' opacity={0.5}/>
+          <Button icon='download-outline' label='Restaurar Backup' bgColor='transparent' textColor='#000' borderWidth={2} borderColor='#000' opacity={0.5}/>
         </CardCreate>
         <CardCreate icon='information-circle' title='Sobre o HabitOS'>
           <Text style={styles.textColor}>Versão: 1.0.0</Text>
