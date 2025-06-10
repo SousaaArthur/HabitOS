@@ -2,36 +2,39 @@ import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, FlatList, Alert } from 'react-native';
 import { Button } from './button';
 
-const daysOfWeek = [
-  { key: '0', label: 'Dom' },
-  { key: '1', label: 'Seg' },
-  { key: '2', label: 'Ter' },
-  { key: '3', label: 'Qua' },
-  { key: '4', label: 'Qui' },
-  { key: '5', label: 'Sex' },
-  { key: '6', label: 'Sáb' },
+  const daysOfWeek = [
+  { key: 'mon', label: 'Seg' },
+  { key: 'tue', label: 'Ter' },
+  { key: 'wed', label: 'Qua' },
+  { key: 'thu', label: 'Qui' },
+  { key: 'fri', label: 'Sex' },
+  { key: 'sat', label: 'Sáb' },
+  { key: 'sun', label: 'Dom' },
 ];
 
-export default function WeekSelector() {
-  const [selectedDays, setSelectedDays] = useState<string[]>([]);
+interface WeekSelectorProps {
+  selectedDays: string[];
+  onChange: (days: string[]) => void;
+}
 
+export default function WeekSelector({ selectedDays, onChange }: WeekSelectorProps) {
   const toggleDay = (key: string) => {
-    setSelectedDays((prev) =>
-      prev.includes(key) ? prev.filter((d) => d !== key) : [...prev, key]
-    );
+    const updatedDays = selectedDays.includes(key)
+      ? selectedDays.filter((d) => d !== key)
+      : [...selectedDays, key];
+
+    onChange(updatedDays);
   };
 
   const isSelected = (key: string) => selectedDays.includes(key);
 
   function selectAllDays() {
     if (selectedDays.length === daysOfWeek.length) {
-      setSelectedDays([]);
-    }
-    else {
-      setSelectedDays(daysOfWeek.map(day => day.key)); // Select all days
+      onChange([]);
+    } else {
+      onChange(daysOfWeek.map((day) => day.key));
     }
   }
-
   
   return (
     <View style={styles.container}>

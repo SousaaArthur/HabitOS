@@ -5,17 +5,18 @@ import { Ionicons } from '@expo/vector-icons';
 
 interface SelectInputProps {
   children: ReactNode;
+  value?: string | null;
+  onValueChange?: (value: string | null) => void;
 }
 
-export default function SelectInput({ children }: SelectInputProps) {
-  const [selectedCategory, setSelectedCategory] = useState(null);
-  const isFocused = selectedCategory !== null;
+export default function SelectInput({ children, value, onValueChange }: SelectInputProps) {
+  const isFocused = value !== null && value !== '';
 
   return (
     <View style={[styles.container, isFocused ? styles.focused : styles.unfocused]}>
       <Picker
-        selectedValue={selectedCategory}
-        onValueChange={(itemValue) => setSelectedCategory(itemValue)}
+        selectedValue={value}
+        onValueChange={onValueChange}
         style={styles.picker}
       >
         {children}

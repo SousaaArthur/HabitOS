@@ -10,8 +10,67 @@ import WeekSelector from '../../components/common/weekSelector';
 import TimeInput from '../../components/common/timeInput';
 import CardCreate from '../../components/common/card';
 
+import { Alert } from 'react-native'; // Importar Alert
+import { useState } from 'react';
+
 
 function CreateHabitScreen() {
+  const [habitName, setHabitName] = useState('');
+  const [habitCategory, setHabitCategory] = useState<string | null>(null);
+  const [habitDays, setHabitDays] = useState<string[]>([]);
+
+
+  const daysOfWeek = [
+  { key: 'mon', label: 'Seg' },
+  { key: 'tue', label: 'Ter' },
+  { key: 'wed', label: 'Qua' },
+  { key: 'thu', label: 'Qui' },
+  { key: 'fri', label: 'Sex' },
+  { key: 'sat', label: 'Sáb' },
+  { key: 'sun', label: 'Dom' },
+];
+
+  function handleCreateHabit() {
+    if (!habitName.trim()) {
+      Alert.alert("Erro", "Por favor, insira o nome do hábito.");
+      return;
+    }
+
+    if (!habitCategory) {
+      Alert.alert("Erro", "Por favor, selecione uma categoria.");
+      return;
+    }
+
+    if (habitDays.length === 0) {
+      Alert.alert("Erro", "Por favor, selecione pelo menos um dia.");
+      return;
+    }
+
+    const categoryLabels: { [key: string]: string } = {
+      saude: 'Saúde',
+      estudo: 'Estudo',
+      trabalho: 'Trabalho',
+      lazer: 'Lazer',
+      financeiro: 'Financeiro',
+      pessoal: 'Pessoal',
+      outros: 'Outros',
+    };
+
+    const dayLabels = habitDays
+      .sort()
+      .map((key) => daysOfWeek.find((d) => d.key === key)?.label || '')
+      .join(', ');
+
+    const categoriaNome = categoryLabels[habitCategory] || 'Desconhecida';
+
+    Alert.alert(
+      "Hábito Criado",
+      `Hábito: ${habitName}\nCategoria: ${categoriaNome}\nDias: ${dayLabels}`
+    );
+  }
+
+
+  
   return (
     <KeyboardAvoidingView 
     style={styles.main}
@@ -25,10 +84,14 @@ function CreateHabitScreen() {
       <ScrollView>
 
       <CardCreate title="Nome do hábito">
-        <CustomTextInput placeholder='Ex: Caminhar de manhã' />
+        <CustomTextInput 
+        placeholder='Ex: Caminhar de manhã' 
+        value={habitName}
+        onChangeText={setHabitName}
+        />
       </CardCreate>
       <CardCreate title="Categoria do hábito" subtitle="Selecione uma categoria para o hábito">
-        <SelectInput>
+        <SelectInput value={habitCategory} onValueChange={setHabitCategory}>
           <Picker.Item label="Categoria" value="" enabled={false} />
           <Picker.Item label="Saúde" value="saude" />
           <Picker.Item label="Estudo" value="estudo" />
@@ -40,7 +103,7 @@ function CreateHabitScreen() {
         </SelectInput>
       </CardCreate>
       <CardCreate title='Dias da semana' subtitle='Selecione os dias da semana'>
-        <WeekSelector></WeekSelector>
+        <WeekSelector selectedDays={habitDays} onChange={setHabitDays} />
       </CardCreate>
       <CardCreate title='Gatilho (Opcional)' subtitle='Conecte seu novo hábito a uma ação existente'>
         <CustomTextInput placeholder='Depois de [Ação atual], farei [Novo hábito]' />
@@ -50,7 +113,7 @@ function CreateHabitScreen() {
         <TimeInput></TimeInput>
       </CardCreate>
       </ScrollView>
-        <Button label='Criar Hábito' icon='add' margin={10}></Button>
+        <Button label='Criar Hábito' icon='add' margin={10} onPress={handleCreateHabit}></Button>
     </KeyboardAvoidingView>
   );
 }

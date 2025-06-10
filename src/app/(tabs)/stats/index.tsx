@@ -4,7 +4,7 @@ import { View, Text, SafeAreaView, ScrollView } from 'react-native';
 import { styles } from '../../../styles/default';
 import { Button } from '../../../components/common/button';
 import CardCreate from '../../../components/common/card';
-import { CardStatus } from '../../../components/statsComponent/cardStats';
+import { CardStatus } from '../../../components/common/cardStats';
 
 
 function Stats(){
